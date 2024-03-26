@@ -11,6 +11,16 @@ export const getCode = async () =>{
     }
 }
 
+export const getUser = async () =>{
+    try {
+        const {data} = await axios(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user`)
+        console.log(data)
+        return data
+    } catch (error) {
+        return console.error(error)
+    }
+}
+
 export const createCode = async () =>{
     try {
         const {status} = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/code`,{
