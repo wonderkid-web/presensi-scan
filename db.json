@@ -1,0 +1,41 @@
+{
+  "code": [
+    {
+      "id": "342a",
+      "createdAt": "2024-03-26T03:13:23.450Z",
+      "code_masuk": "915a7199-0f65-bb31-fc72-9995c0ebaf40",
+      "code_keluar": "334f8504-adc7-2a1e-6a5b-37c6679ade7b"
+    },
+    {
+      "id": "67f4",
+      "createdAt": "2024-03-26T03:13:31.210Z",
+      "code_masuk": "32ef130a-76f3-54b2-ca13-2def9d0694fc",
+      "code_keluar": "41a07fce-450f-3cb6-a345-6617ab6b77db"
+    },
+    {
+      "id": "c0cc",
+      "createdAt": "2024-03-26T03:13:50.451Z",
+      "code_masuk": "70e8c1ad-8cf0-5176-7831-3ceacfc7bdc6",
+      "code_keluar": "3889997b-2aa8-ebca-5760-0e1c5b5de3b3"
+    },
+    {
+      "id": "5820",
+      "createdAt": "2024-03-26T04:00:06.571Z",
+      "code_masuk": "f3e430da-9dab-99a3-4ce3-c1b65c42eed6",
+      "code_keluar": "7ba551b4-0f07-d232-9d56-6540de3637c6"
+    },
+    {
+      "id": "5384",
+      "createdAt": "2024-03-26T04:00:25.800Z",
+      "code_masuk": "cdce466e-1aba-96cd-dbfd-5a37de656758",
+      "code_keluar": "d209e227-d8dc-a9a1-8072-26e3e5ad34b5"
+    }
+  ],
+  "user": [
+    {
+      "id": "20f9",
+      "name": "Muhammad Wahyu Ramadhan",
+      "jam_pulang": "2024-03-26T04:36:21.333Z"
+    }
+  ]
+}
