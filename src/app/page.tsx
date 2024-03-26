@@ -17,7 +17,7 @@ export default function Home() {
     queryKey: ["code"]
   })
 
-  const {mutate} = useMutation({
+  const {mutate, isPending} = useMutation({
     mutationFn: createCode,
     mutationKey: ["create"],
     onSuccess: ()=>{
@@ -30,12 +30,14 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <div className="grid grid-cols-1 place-items-center">
-        <button className="p-2 mt-4 rounded-md bg-slate-300 w-fit" onClick={()=> mutate()}>Generate Code</button>
+        <button disabled={isPending} className={`${!isPending ? 'bg-slate-300' : 'bg-slate-500'} p-2 mt-4 rounded-md  w-fit`} onClick={()=> mutate()}>Generate Code</button>
       </div>
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
         <div className="flex gap-5">
           {
-            data?.map(code=> <QRCode key={uuid()} size={100} value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-masuk/${code.code_masuk}`} />)
+            data?.map(code=> <>
+            <QRCode key={uuid()} size={100} value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-masuk/${code.code_masuk}`} />
+            </>)
           }
         </div>
         <div className="flex gap-5">

@@ -4,6 +4,7 @@ import uuid from "react-uuid"
 export const getCode = async () =>{
     try {
         const {data} = await axios(`${process.env.NEXT_PUBLIC_BASE_API_URL}/code`)
+        console.log(data)
         return data
     } catch (error) {
         return console.error(error)
