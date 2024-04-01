@@ -47,13 +47,13 @@ export default function Home() {
         <div className="flex gap-5">
           <h1 className="text-2xl">Absen Masuk</h1>
           {data?.map((code) => (
-            <>
+            <div key={code.code_keluar}>
               <QRCode
                 key={uuid()}
                 size={100}
                 value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-masuk/${code.code_masuk}`}
               />
-            </>
+            </div>
           ))}
         </div>
         <div className="flex gap-5">
