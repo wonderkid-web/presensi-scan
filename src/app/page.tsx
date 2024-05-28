@@ -3,6 +3,7 @@
 import { createCode, getCode, getUser } from "@/actions";
 import { Code } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import Link from "next/link";
 
 import QRCode from "react-qr-code";
 import uuid from "react-uuid";
@@ -30,8 +31,11 @@ export default function Home() {
 
   if (isLoading) return <h1>Loading...</h1>;
 
+
+
   return (
     <main className="flex flex-col">
+      <Link href="http://localhost:3000/api/test?code=123123&nama=Wahyu">test</Link>
       <div className="grid grid-cols-1 place-items-center">
         <button
           disabled={isPending}
@@ -51,7 +55,9 @@ export default function Home() {
               <QRCode
                 key={uuid()}
                 size={100}
-                value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-masuk/${code.code_masuk}`}
+                // value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-masuk/${code.code_masuk}`}
+                value={`${code.code_masuk}`}
+
               />
             </div>
           ))}
@@ -62,7 +68,8 @@ export default function Home() {
             <QRCode
               key={uuid()}
               size={100}
-              value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-pulang/${code.code_keluar}`}
+              // value={`${process.env.NEXT_PUBLIC_BASE_URL}/api/qr-code-pulang/${code.code_keluar}`}
+              value={`${code.code_keluar}`}
             />
           ))}
         </div>

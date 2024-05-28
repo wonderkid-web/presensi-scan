@@ -5,3 +5,16 @@ export interface Code {
     code_masuk: UUID,
     code_keluar: UUID
   }
+
+
+export interface User {
+  id: string;
+  username: string;
+  name: string;
+  nip: string;
+  job_title: string;
+  address: string;
+  contact: string;
+  created_at: string;
+  email: string;
+}
