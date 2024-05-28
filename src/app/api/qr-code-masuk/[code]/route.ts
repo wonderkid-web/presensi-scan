@@ -65,6 +65,12 @@ export async function GET(req: Request, params: { params: any }) {
   if (checkCode && checkUser) status = true;
   else status = false;
 
+
+  console.log("checkCode", checkCode);
+  console.log("checkUser", checkUser);
+  console.log("codes", codes);
+  console.log("user", user);
+
   try {
     if (status) {
       await axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user`, {
