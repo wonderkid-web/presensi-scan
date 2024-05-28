@@ -84,6 +84,7 @@ export async function GET(req: Request, params: { params: any }) {
         checkCode,
         checkUser,
         codes,
+        code,
         user
       })
       // return NextResponse.redirect(
@@ -96,6 +97,7 @@ export async function GET(req: Request, params: { params: any }) {
         checkCode,
         checkUser, 
         codes,
+        code,
         user
       })
       // return NextResponse.redirect(
