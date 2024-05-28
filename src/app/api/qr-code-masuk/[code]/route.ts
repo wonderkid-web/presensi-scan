@@ -73,13 +73,24 @@ export async function GET(req: Request, params: { params: any }) {
         type: "masuk",
       });
 
-      return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/proses/sukses`
-      );
+      return NextResponse.json({
+        status,
+        checkCode,
+        checkUser
+      })
+      // return NextResponse.redirect(
+      //   `${process.env.NEXT_PUBLIC_BASE_URL}/proses/sukses`
+      // );
     } else {
-      return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/proses/gagal`
-      );
+
+      return NextResponse.json({
+        status,
+        checkCode,
+        checkUser
+      })
+      // return NextResponse.redirect(
+      //   `${process.env.NEXT_PUBLIC_BASE_URL}/proses/gagal`
+      // );
     }
   } catch (error) {
     return NextResponse.json({ error });
