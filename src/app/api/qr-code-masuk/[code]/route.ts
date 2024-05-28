@@ -76,7 +76,9 @@ export async function GET(req: Request, params: { params: any }) {
       return NextResponse.json({
         status,
         checkCode,
-        checkUser
+        checkUser,
+        codes,
+        user
       })
       // return NextResponse.redirect(
       //   `${process.env.NEXT_PUBLIC_BASE_URL}/proses/sukses`
@@ -86,7 +88,9 @@ export async function GET(req: Request, params: { params: any }) {
       return NextResponse.json({
         status,
         checkCode,
-        checkUser
+        checkUser, 
+        codes,
+        user
       })
       // return NextResponse.redirect(
       //   `${process.env.NEXT_PUBLIC_BASE_URL}/proses/gagal`
