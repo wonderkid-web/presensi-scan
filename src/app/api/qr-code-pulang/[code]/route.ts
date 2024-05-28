@@ -43,13 +43,15 @@ import { Code } from "@/types";
 import axios from "axios";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, params: { params: any }) {
+export async function GET(req: Request, {params}: { params: any }) {
+  const code = params.code;
+
   let status;
 
   const url = req.url;
   const searchParams = new URLSearchParams(url.split("?")[1])!;
   const email = searchParams.get("email")?.toLowerCase();
-  const code = searchParams.get("code");
+  // const code = searchParams.get("code");
   
   if (!email) return NextResponse.json({ error: "User Tidak Ada!" });  
 
