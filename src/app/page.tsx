@@ -35,7 +35,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col">
-      <Link href="http://localhost:3000/api/test?code=123123&nama=Wahyu">test</Link>
       <div className="grid grid-cols-1 place-items-center">
         <button
           disabled={isPending}
