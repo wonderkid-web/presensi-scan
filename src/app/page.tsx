@@ -1,19 +1,13 @@
 "use client";
 
-import { createCode, getCode, getUser } from "@/actions";
-import EmblaCarousel from "@/components/carousel/EmblaCarousel";
 import useAuth from "@/hooks/useAuth";
-import { Code } from "@/types";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { EmblaOptionsType } from 'embla-carousel'
 import Image from "next/image";
 import foto1 from "@/../public/foto1.jpg"
 
 
 
-const OPTIONS: EmblaOptionsType = { loop: true }
+const OPTIONS = { loop: true }
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 

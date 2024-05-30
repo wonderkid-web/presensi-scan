@@ -8,7 +8,7 @@ import { UseQueryResult, useQueries, useQuery } from "@tanstack/react-query";
 import { getUser } from "@/actions";
 import { Code, Laporan, SingleUser } from "@/types";
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: any) {
   const [userQuery, akunQuery] = useQueries({
     queries: [
       {

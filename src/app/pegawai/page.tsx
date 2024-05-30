@@ -15,7 +15,7 @@ import Link from "next/link";
 import { UUID } from "crypto";
 import { Toaster, toast } from "sonner";
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: any) {
   const query = useQueryClient();
   const { data: akunPegawai, isLoading } = useQuery({
     queryKey: ["akun"],
