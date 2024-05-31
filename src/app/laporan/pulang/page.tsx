@@ -4,9 +4,11 @@ import React from "react";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { supabase } from "@/lib/supabase";
-import { UseQueryResult, useQueries, useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useQueries } from "@tanstack/react-query";
 import { getUser } from "@/actions";
 import { Code, Laporan, SingleUser } from "@/types";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 function Layout({ children }: any) {
   const [userQuery, akunQuery] = useQueries({
@@ -47,10 +49,43 @@ function Layout({ children }: any) {
       return entry as Laporan;
     }) || [];
 
+  const exportToExcel = () => {
+    // Buat worksheet dari data
+    const worksheet = XLSX.utils.json_to_sheet(
+      result.map((u: Laporan, i: number) => ({
+        No: i + 1,
+        Nama: u.name,
+        NIP: u.nip,
+        Jabatan: u.job_title,
+        Tanggal: format(new Date(u.jam), "dd MMMM yyyy HH:mm", { locale: id }),
+      }))
+    );
+
+    // Buat workbook dan tambahkan worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Presensi Pulang");
+
+    // Ekspor file Excel
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+
+    // Simpan file Excel menggunakan file-saver
+    const data = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(data, "Presensi_Pulang.xlsx");
+  };
+
   return (
     <>
       <div className="flex justify-between px-4">
         <h1 className="text-2xl font-bold">Presensi Pulang</h1>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={exportToExcel}
+        >
+          Export to Excel
+        </button>
       </div>
       <table className="min-w-full bg-white">
         <thead>
@@ -79,7 +114,7 @@ function Layout({ children }: any) {
             ))
           ) : (
             <tr>
-              <td colSpan={4}>
+              <td colSpan={5}>
                 <h1 className="text-center text-md">Absen Kosong</h1>
               </td>
             </tr>

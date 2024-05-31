@@ -5,16 +5,18 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import GridLayout from "@/components/layout/GridLayout";
 import { supabase } from "@/lib/supabase";
-import useAuth from "@/hooks/useAuth";
+import { useAuth } from "@/lib/zustand";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  
+
   const router = useRouter();
-  const { user } = useAuth();
+
+  const {checkAuth, user} = useAuth()
 
   const handleLogin = async () => {
     setLoading(true);
@@ -27,6 +29,7 @@ export default function Login() {
     if (error) {
       setErrorMessage(error.message);
     } else {
+      checkAuth()
       router.push("/");
     }
   };
@@ -35,6 +38,8 @@ export default function Login() {
     router.push("/");
     return null; // Menghindari rendering ganda saat redirect
   }
+
+
 
   return (
     <div className="flex justify-center items-center min-h-screen">

@@ -4,6 +4,7 @@
 import { createCode, getCode, getUser } from "@/actions";
 import { Code } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { format } from "date-fns";
 
 import QRCode from "react-qr-code";
 import uuid from "react-uuid";
@@ -28,6 +29,10 @@ export default function Home() {
       queryClient.invalidateQueries({ queryKey: ["code"] });
     },
   });
+
+  const currentDate = new Date();
+  const formattedDate = format(currentDate, "eeee, MMMM d, yyyy HH:mm");
+
 
   if (isLoading) return <h1>Loading...</h1>;
 
@@ -68,6 +73,9 @@ export default function Home() {
             />
           
         </div>
+      </div>
+      <div className="grid grid-cols-1 place-items-center mt-10">
+        <p className="text-lg font-semibold">Tanggal Sekarang: {formattedDate}</p>
       </div>
       {/* <div className="mt-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
         <div className="flex gap-5">
