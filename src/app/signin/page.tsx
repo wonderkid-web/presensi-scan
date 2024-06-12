@@ -2,10 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import GridLayout from "@/components/layout/GridLayout";
-import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/lib/zustand";
+import { signIn } from "next-auth/react";
 
 
 export default function Login() {
@@ -14,30 +11,19 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const router = useRouter();
-
-  const {checkAuth, user} = useAuth()
 
   const handleLogin = async () => {
     setLoading(true);
     setErrorMessage("");
-    const { error } = await supabase.auth.signInWithPassword({
+  
+    setLoading(false);
+
+     await signIn("credentials",{
       email,
       password,
-    });
-    setLoading(false);
-    if (error) {
-      setErrorMessage(error.message);
-    } else {
-      checkAuth()
-      router.push("/");
-    }
+      callbackUrl: "/"
+    })
   };
-
-  if (user) {
-    router.push("/");
-    return null; // Menghindari rendering ganda saat redirect
-  }
 
 
 

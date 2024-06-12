@@ -1,14 +1,9 @@
 "use client"
-import useAuthChecker from "@/hooks/useAuth";
 import Link from "next/link";
 import React from "react";
 
 function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const user = useAuthChecker();
-
-  if (!user) {
-    return null;
-  }
+ 
   return (
     <div className="flex flex-col gap-4 p-2">
       <div className="flex justify-between">

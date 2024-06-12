@@ -1,18 +1,13 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/lib/zustand";
-import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 import React from "react";
 
 function ButtonLogout() {
-  const router = useRouter();
-  const {clearAuth} = useAuth()
-
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    clearAuth()
-    router.push("/signin");
+    await signOut();
   };
 
   return (

@@ -17,6 +17,7 @@ import { Toaster, toast } from "sonner";
 
 function Layout({ children }: any) {
   const query = useQueryClient();
+  
   const { data: akunPegawai, isLoading } = useQuery({
     queryKey: ["akun"],
     queryFn: async () => {
