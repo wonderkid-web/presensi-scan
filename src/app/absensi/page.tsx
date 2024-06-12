@@ -49,9 +49,12 @@ export default function Home() {
           Buat QRCode Absen
         </button>
       </div>
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
+      {/* <pre>{JSON.stringify(data?.code_masuk, null, 2)}</pre> */}
+      {
+        data ?    <div className="mt-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
         <div className="flex gap-5 flex-col items-center">
           <h1 className="font-bold underline text-2xl">Absen Masuk</h1>
+
        
             <div>
               <QRCode
@@ -63,7 +66,7 @@ export default function Home() {
             </div>
         </div>
         <div className="flex gap-5 flex-col items-center">
-          <h1 className="font-bold underline text-2xl">Absen Keluar</h1>
+          <h1 className="font-bold underline text-2xl">Absen Pulang</h1>
 
             <QRCode
               key={uuid()}
@@ -73,15 +76,11 @@ export default function Home() {
             />
           
         </div>
-      </div>
-      <div className="grid grid-cols-1 place-items-center mt-10">
+      </div> : <h1 className="text-2xl text-center font-bold mt-16 text-gray-500">Belum Ada QR Code</h1>
+      }
+       <div className="grid grid-cols-1 place-items-center mt-10">
         <p className="text-lg font-semibold">Tanggal Sekarang: {formattedDate}</p>
       </div>
-      {/* <div className="mt-4 grid grid-cols-1 md:grid-cols-2 place-items-center gap-4">
-        <div className="flex gap-5">
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </div>
-      </div> */}
     </main>
   );
 }
