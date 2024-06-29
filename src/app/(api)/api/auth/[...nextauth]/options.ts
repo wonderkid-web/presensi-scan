@@ -23,7 +23,7 @@ export const options: AuthOptions = {
         if (credentials) {
           try {
 
-            if(credentials.email.includes("admin")){
+            if(!credentials.email.includes("admin")){
               return null
             }
 
@@ -31,6 +31,8 @@ export const options: AuthOptions = {
               email: credentials.email,
               password: credentials.password,
             });
+
+            console.log(data)
 
             if (error) {
               console.log(error.message);
