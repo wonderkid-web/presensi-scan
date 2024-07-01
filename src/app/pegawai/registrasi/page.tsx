@@ -55,19 +55,16 @@ const Register = () => {
       return;
     }
 
-
-    toast.success("Berhasil Menambahkan akun baru!",{
+    toast.success("Berhasil Menambahkan akun baru!", {
       onAutoClose() {
-        router.push("/pegawai")
+        router.push("/pegawai");
       },
-    })
-
+    });
   };
-    
 
   return (
     <div>
-      <Toaster richColors={true}/>
+      <Toaster richColors={true} />
       <div className="flex justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -79,14 +76,14 @@ const Register = () => {
               <label className="block text-gray-700">Email</label>
               <input
                 type="email"
-                {...register("email", { required: true })}
+                {...register("email", { required: "Email is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.email && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.email.message}
                 </span>
               )}
             </div>
@@ -94,84 +91,84 @@ const Register = () => {
               <label className="block text-gray-700">Password</label>
               <input
                 type="password"
-                {...register("password", { required: true })}
+                {...register("password", { required: "Password is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.password ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.password && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.password.message}
                 </span>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">Nama</label>
               <input
-                {...register("name", { required: true })}
+                {...register("name", { required: "Nama is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.name && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.name.message}
                 </span>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">NIP</label>
               <input
-                {...register("nip", { required: true })}
+                {...register("nip", { required: "NIP is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.nip ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.nip && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.nip.message}
                 </span>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">Jabatan</label>
               <input
-                {...register("job_title", { required: true })}
+                {...register("job_title", { required: "Jabatan is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.job_title ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.job_title && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.job_title.message}
                 </span>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">Alamat</label>
               <input
-                {...register("address", { required: true })}
+                {...register("address", { required: "Alamat is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.address ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.address && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.address.message}
                 </span>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">Kontak</label>
               <input
-                {...register("contact", { required: true })}
+                {...register("contact", { required: "Kontak is required" })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.contact ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.contact && (
                 <span className="text-red-500 text-sm">
-                  This field is required
+                  {errors.contact.message}
                 </span>
               )}
             </div>

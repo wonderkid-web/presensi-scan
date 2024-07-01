@@ -21,9 +21,9 @@ const Sidebar = () => {
             Dashboard
         </Link>
         <Link href="/pegawai" className={`block px-4 py-2 rounded hover:bg-gray-700 ${pathname === '/pegawai' && 'bg-gray-700'}`}>
-            Manajemen Pegawai
+            Manajemen Guru
         </Link>
-        <Link href="/laporan" className={`block px-4 py-2 rounded hover:bg-gray-700 ${pathname === '/laporan' && 'bg-gray-700'}`}>
+        <Link href="/laporan/masuk" className={`block px-4 py-2 rounded hover:bg-gray-700 ${pathname === '/laporan' && 'bg-gray-700'}`}>
             Laporan Presensi
         </Link>
         <Link href="/absensi" className={`block px-4 py-2 rounded hover:bg-gray-700 ${pathname === '/absensi' && 'bg-gray-700'}`}>

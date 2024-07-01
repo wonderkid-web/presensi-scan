@@ -8,8 +8,8 @@ import GridLayout from "@/components/layout/GridLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Presensi Pegawai",
-  description: "Website Presensi Pegawai",
+  title: "Presensi Guru",
+  description: "Website Presensi Guru",
 };
 
 export default function RootLayout({

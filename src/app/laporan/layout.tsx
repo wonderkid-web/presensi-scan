@@ -9,7 +9,7 @@ function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
       <div className="flex justify-between">
         <h1 className="text-4xl font-bold">Menu Laporan</h1>
 
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <Link
             href={"/laporan/masuk"}
             className="bg-blue-400 px-2 py-1 text-white rounded-sm font-bold text-center flex justify-center items-center"
@@ -22,7 +22,7 @@ function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
           >
             Laporan Pulang
           </Link>
-        </div>
+        </div> */}
       </div>
       {children}
     </div>
