@@ -18,9 +18,9 @@ function GridLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={inter.className}>
-      <div className="h-screen grid grid-cols-[150px_1fr_1fr_1fr_1fr] grid-rows-[75px_1fr_1fr_1fr_1fr] gap-4">
+      <div className="h-full grid grid-cols-[150px_1fr_1fr_1fr_1fr] grid-rows-[75px_1fr_1fr_1fr_1fr] gap-4">
         {showSidebarAndNavbar && (
-          <div className="border row-span-5">
+          <div className="row-span-5">
             <Sidebar />
           </div>
         )}

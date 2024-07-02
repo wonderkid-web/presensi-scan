@@ -2,6 +2,7 @@
 "use client";
 
 import { createCode, getCode, getUser } from "@/actions";
+import { useToggler } from "@/helper/zustand";
 import { Code } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
@@ -11,6 +12,7 @@ import uuid from "react-uuid";
 
 export default function Home() {
   const queryClient = useQueryClient();
+  const {toggler} = useToggler()
 
   const { data, isLoading } = useQuery<Code>({
     queryFn: getCode,
@@ -30,6 +32,8 @@ export default function Home() {
     },
   });
 
+  const toggling = () => toggler()
+
   const currentDate = new Date();
   const formattedDate = format(currentDate, "eeee, MMMM d, yyyy HH:mm");
 
@@ -38,6 +42,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col">
+      <button className="bg-sky-600 text-white py-2 px-1 rounded-md font-semibold w-fit mx-auto" onClick={toggling}>tampil</button>
       <div className="grid grid-cols-1 place-items-center">
         <button
           disabled={isPending}

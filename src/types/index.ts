@@ -6,6 +6,10 @@ export interface Code {
     code_keluar: UUID
   }
 
+export type Toggler = {
+  toggle: boolean;
+  toggler: ()=> void;
+}
 
 export interface User {
   id: string;

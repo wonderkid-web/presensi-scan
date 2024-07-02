@@ -5,13 +5,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import logo from "@/../public/favicon.ico"
+import { useToggler } from '@/helper/zustand';
 
 const Sidebar = () => {
   const pathname = usePathname()
+  const {toggle} = useToggler()
   
 
   return (
-    <div className="h-screen bg-gray-800 text-white p-4">
+    <div className={`min-h-screen bg-gray-800 text-white p-4 ${toggle && 'hidden'}`}>
       <div className='relative w-8 h-8 mx-auto mb-2'>
         <Image src={logo} alt='logo' objectFit='cover' />
       </div>
