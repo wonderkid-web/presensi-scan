@@ -5,7 +5,7 @@ function layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="flex flex-col gap-4 p-2">
       <div className="flex justify-between">
-        <h1 className="text-4xl font-bold">Manajemen Data Pegawai</h1>
+        <h1 className="text-4xl font-bold">Manajemen Data Guru</h1>
 
         <Link
           href={"/pegawai/registrasi"}

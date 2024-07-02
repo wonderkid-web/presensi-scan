@@ -50,7 +50,7 @@ function Layout({ children }: any) {
       <>
         <Toaster />
         <div className="flex justify-between px-4">
-          <h1 className="text-2xl font-semibold">Table Akun Pegawai</h1>
+          <h1 className="text-2xl font-semibold">Table Akun Guru</h1>
         </div>
         <div className="overflow-x-auto border">
         <table className="min-w-full bg-white">
@@ -102,7 +102,7 @@ function Layout({ children }: any) {
             ) : (
               <tr>
                 <td colSpan={8}>
-                  <h1 className="text-center text-md mt-4">Belum Akun Data Pegawai.</h1>
+                  <h1 className="text-center text-md mt-4">Belum Akun Data Guru.</h1>
                 </td>
               </tr>
             )}
