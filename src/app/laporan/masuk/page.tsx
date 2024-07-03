@@ -89,7 +89,7 @@ function Page({ children }: any) {
   return (
     <>
       <div className="flex justify-between px-4">
-        <h1 className="text-2xl font-bold">Presensi Pegawai</h1>
+        <h1 className="text-2xl font-bold">Presensi Guru</h1>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
           onClick={exportToExcel}
