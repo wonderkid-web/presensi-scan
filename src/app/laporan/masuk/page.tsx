@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 // components/TabComponent.tsx
-import React from "react";
+import React, { useState } from "react";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { supabase } from "@/lib/supabase";
@@ -12,6 +12,9 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
 function Page({ children }: any) {
+  const [nama, setNama] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [userQuery, akunQuery] = useQueries({
     queries: [
       {
@@ -32,6 +35,7 @@ function Page({ children }: any) {
     data: user,
     isLoading: isLoadingUser,
   }: UseQueryResult<Code[], any> = userQuery;
+
   const { data: akun, isLoading: akunLoading } = akunQuery;
 
   if (isLoadingUser || akunLoading) return <p>Loading...</p>;
@@ -41,7 +45,6 @@ function Page({ children }: any) {
     return acc;
   }, {});
 
-  // Gabungkan data masuk dan pulang berdasarkan nama pegawai
   const laporanMasuk = user?.filter((entry) => entry.type === "masuk") || [];
   const laporanPulang = user?.filter((entry) => entry.type === "pulang") || [];
 
@@ -57,38 +60,37 @@ function Page({ children }: any) {
     };
   });
 
+  const filteredResults = result.filter((u) =>
+    u.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const exportToExcel = () => {
-    // Buat worksheet dari data
     const worksheet = XLSX.utils.json_to_sheet(
-      result.map((u: Laporan, i: number) => ({
+      filteredResults.map((u: Laporan, i: number) => ({
         No: i + 1,
         Nama: u.name,
         NIP: u.nip,
         Jabatan: u.job_title,
         TanggalMasuk: format(new Date(u.jam), "dd MMMM yyyy HH:mm", { locale: id }),
-        // @ts-ignore
         TanggalPulang: u.pulangJam ? format(new Date(u.pulangJam), "dd MMMM yyyy HH:mm", { locale: id }) : "Belum Pulang",
       }))
     );
 
-    // Buat workbook dan tambahkan worksheet
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Presensi");
 
-    // Ekspor file Excel
     const excelBuffer = XLSX.write(workbook, {
       bookType: "xlsx",
       type: "array",
     });
 
-    // Simpan file Excel menggunakan file-saver
     const data = new Blob([excelBuffer], { type: "application/octet-stream" });
     saveAs(data, "Presensi.xlsx");
   };
 
   return (
     <>
-      <div className="flex justify-between px-4">
+      <div className="flex justify-between px-4 mb-4">
         <h1 className="text-2xl font-bold">Presensi Guru</h1>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -96,6 +98,15 @@ function Page({ children }: any) {
         >
           Export to Excel
         </button>
+      </div>
+      <div className="mb-4 px-4">
+        <input
+          type="text"
+          className="w-full p-2 border rounded"
+          placeholder="Cari berdasarkan nama"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
       <table className="min-w-full bg-white">
         <thead>
@@ -109,8 +120,8 @@ function Page({ children }: any) {
           </tr>
         </thead>
         <tbody>
-          {result.length > 0 ? (
-            result.map((u: Laporan, i: number) => (
+          {filteredResults.length > 0 ? (
+            filteredResults.map((u: Laporan, i: number) => (
               <tr className="text-center" key={u.id}>
                 <td className="py-2 px-4 border-b">{i + 1}</td>
                 <td className="py-2 px-4 border-b">{u.name}</td>
