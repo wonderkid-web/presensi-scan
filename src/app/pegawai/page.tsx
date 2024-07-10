@@ -52,7 +52,7 @@ function Layout({ children }: any) {
         <div className="flex justify-between px-4">
           <h1 className="text-2xl font-semibold">Table Akun Guru</h1>
         </div>
-        <div className="overflow-x-auto border">
+        <div className="overflow-auto h-[70vh] border">
         <table className="min-w-full bg-white">
           <thead>
             <tr>

@@ -1,28 +1,40 @@
 // pages/login.tsx
 "use client";
 
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { signIn } from "next-auth/react";
 import logo from "@/../../public/favicon.ico";
 import Image from "next/image";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter()
 
-  const handleLogin = async () => {
+  const handleLogin:MouseEventHandler<HTMLButtonElement> = async (e) => {
+    e.preventDefault()
+
     setLoading(true);
     setErrorMessage("");
 
-    setLoading(false);
-
-    await signIn("credentials", {
+    const signin = await signIn("credentials", {
       email,
       password,
-      callbackUrl: "/",
+      redirect: false
     });
+
+    setLoading(false);
+
+    
+    if(!signin?.ok){
+      toast.error("NIP kamu ada yg salah nih")
+    }else{
+      router.push('/')
+    }
   };
 
   return (
@@ -38,11 +50,11 @@ export default function Login() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Email
+              NIP
             </label>
             <input
-              type="email"
-              placeholder="Email"
+              type="text"
+              placeholder="nip"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"

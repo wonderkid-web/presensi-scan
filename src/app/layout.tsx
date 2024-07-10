@@ -4,6 +4,7 @@ import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProvider from "@/components/wrapper/QueryProvider";
 import GridLayout from "@/components/layout/GridLayout";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Toaster richColors={true} position="top-center" />
         <QueryProvider>
           <GridLayout>{children}</GridLayout>
         </QueryProvider>

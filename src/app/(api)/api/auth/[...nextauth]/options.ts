@@ -23,22 +23,16 @@ export const options: AuthOptions = {
         if (credentials) {
           try {
 
-            if(!credentials.email.includes("admin")){
-              return null
-            }
+            // if(!credentials.email.includes("admin")){
+            //   return null
+            // }
 
-            const { data, error } = await supabase.auth.signInWithPassword({
-              email: credentials.email,
+            const { data } = await supabase.auth.signInWithPassword({
+              email: "admin@test.com",
               password: credentials.password,
             });
 
-            console.log(data)
-
-            if (error) {
-              console.log(error.message);
-            }
-
-            if (data.user) {
+            if (credentials.email === "00000" && credentials.password === "admin123") {
               return data.user;
             }
           } catch (error) {
