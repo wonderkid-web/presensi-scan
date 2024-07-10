@@ -65,7 +65,6 @@ const Register = () => {
 
   return (
     <div>
-      <Toaster richColors={true} />
       <div className="flex justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}

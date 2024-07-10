@@ -90,7 +90,6 @@ const Update = ({ params: { id: userId } }: { params: { id: string } }) => {
 
   return (
     <div>
-      <Toaster richColors={true} />
       <div className="flex justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
