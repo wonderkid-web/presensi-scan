@@ -28,25 +28,26 @@ const Register = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { email, password, name, nip, job_title, address, contact } = data;
 
-    const { error, data: akunBaru } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    // const { error, data: akunBaru } = await supabase.auth.signUp({
+    //   email,
+    //   password,
+    // });
 
-    if (error) {
-      console.error("Error signing up:", error.status);
-      return;
-    }
+    // if (error) {
+    //   console.error("Error signing up:", error.status);
+    //   return;
+    // }
 
     const { error: insertError } = await supabase.from("user").insert([
       {
-        id: akunBaru.user?.id,
+        id: uuid(),
         name,
         nip,
         job_title,
         address,
         contact,
         email,
+        password
       },
     ]);
 

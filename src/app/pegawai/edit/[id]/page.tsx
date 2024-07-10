@@ -57,19 +57,19 @@ const Update = ({ params: { id: userId } }: { params: { id: string } }) => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { email, password, name, nip, job_title, address, contact } = data;
 
-    const updates = { email, name, nip, job_title, address, contact };
+    const updates = { email, name, nip, job_title, address, contact, password };
 
-    if (password) {
-      const { error: authError } = await supabase.auth.updateUser({
-        email,
-        password,
-      });
+    // if (password) {
+    //   const { error: authError } = await supabase.auth.updateUser({
+    //     email,
+    //     password,
+    //   });
 
-      if (authError) {
-        console.error("Error updating auth data:", authError);
-        return;
-      }
-    }
+    //   if (authError) {
+    //     console.error("Error updating auth data:", authError);
+    //     return;
+    //   }
+    // }
 
     const { error: updateError } = await supabase
       .from("user")
