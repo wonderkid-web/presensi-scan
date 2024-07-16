@@ -27,8 +27,9 @@ function Layout({ children }: any) {
   });
 
   const handleDeleteUser = async (userId: UUID) => {
-    const { error } = await supabase.auth.admin.deleteUser(userId);
-    if (!error) {
+    // const { error } = await supabase.auth.admin.deleteUser(userId);
+    // if (!error) {
+    if (true) {
       const { error: hapusError } = await supabase
         .from("user")
         .delete()
@@ -39,7 +40,7 @@ function Layout({ children }: any) {
       }
     } else {
       toast.error("Gagal Menghapus akun!");
-      toast.error(error.message);
+      // toast.error(error.message);
     }
   };
 
@@ -48,7 +49,6 @@ function Layout({ children }: any) {
   if (akunPegawai)
     return (
       <>
-        <Toaster />
         <div className="flex justify-between px-4">
           <h1 className="text-2xl font-semibold">Table Akun Guru</h1>
         </div>

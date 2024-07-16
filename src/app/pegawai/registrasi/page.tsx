@@ -28,23 +28,22 @@ const Register = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { email, password, name, nip, job_title, address, contact } = data;
 
-    const isAvailable = await supabase.from("user").select("*").eq("nip", nip)
-    
+    const isAvailable = await supabase.from("user").select("*").eq("nip", nip);
 
-    if(isAvailable.data?.length){
-      toast.info("NIP sudah terdaftar!")
-      return null
+    if (isAvailable.data?.length) {
+      toast.info("NIP sudah terdaftar!");
+      return null;
     }
 
-    const { error, data: akunBaru } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    // const { error, data: akunBaru } = await supabase.auth.signUp({
+    //   email,
+    //   password,
+    // });
 
-    if (error) {
-      console.error("Error signing up:", error.status);
-      return;
-    }
+    // if (error) {
+    //   console.error("Error signing up:", error.status);
+    //   return;
+    // }
 
     const { error: insertError } = await supabase.from("user").insert([
       {
@@ -55,7 +54,7 @@ const Register = () => {
         address,
         contact,
         email,
-        password
+        password,
       },
     ]);
 
@@ -127,14 +126,19 @@ const Register = () => {
             <div className="mb-4">
               <label className="block text-gray-700">NIP</label>
               <input
-                {...register("nip", { required: "NIP is required" })}
+                {...register("nip", {
+                  required: "NIP is required dan Maksimal/Minimal 5 Angka",
+                  minLength: 5,
+                  maxLength: 5,
+                })}
                 className={`mt-1 p-2 w-full border rounded ${
                   errors.nip ? "border-red-500" : "border-gray-300"
                 }`}
               />
               {errors.nip && (
                 <span className="text-red-500 text-sm">
-                  {errors.nip.message}
+               
+                  {/* {errors.nip.message} */}
                 </span>
               )}
             </div>
