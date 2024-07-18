@@ -38,7 +38,7 @@ export default function Home() {
 
   useInterval(() => {
     mutate()
-  }, 60 * 3);
+  }, 1000 * 60 * 3);
 
   const currentDate = new Date();
   const formattedDate = format(currentDate, "eeee, MMMM d, yyyy HH:mm");
