@@ -37,7 +37,7 @@ export default function Home() {
   const toggling = () => toggler();
 
   useInterval(() => {
-    // mutate();
+    mutate()
   }, 60 * 3);
 
   const currentDate = new Date();

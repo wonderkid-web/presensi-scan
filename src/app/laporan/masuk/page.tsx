@@ -13,6 +13,7 @@ import { saveAs } from "file-saver";
 
 function Page({ children }: any) {
   const [nama, setNama] = useState("");
+  
   const [searchQuery, setSearchQuery] = useState("");
 
   const [userQuery, akunQuery] = useQueries({
